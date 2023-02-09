@@ -1,0 +1,33 @@
+version: "3"
+services:    
+  web:
+    build: apache
+    ports:
+       - 80:80
+       - 443:443
+    volumes:
+       - ./apache/prestashop.conf:/etc/apache2/sites-enabled/prestashop.conf
+       - ./apache/wordpress.conf:/etc/apache2/sites-enabled/wordpress.conf     
+       - ./prestashop:/app/prestashop  
+       - ./wordpress:/app/wordpress
+           
+  db:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: abc123.
+      MYSQL_DATABASE: presta
+      MYSQL_USER: prestauser
+      MYSQL_PASSWORD: prestapw
+    volumes:
+       - basedatos:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    ports:
+      - 8080:80
+    environment:
+      - PMA_HOST=db    
+        
+volumes:
+  basedatos:
