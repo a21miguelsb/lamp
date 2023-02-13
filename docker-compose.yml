@@ -9,8 +9,7 @@ services:
        - ./apache/prestashop.conf:/etc/apache2/sites-enabled/prestashop.conf
        - ./apache/wordpress.conf:/etc/apache2/sites-enabled/wordpress.conf     
        - ./prestashop:/app/prestashop  
-       - ./wordpress:/app/wordpress
-           
+       - ./wordpress:/app/wordpress 
   db:
     image: mysql
     environment:
