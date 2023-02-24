@@ -4,12 +4,12 @@ services:
     build: php
     ports:
        - 8000:80
-       - 8443:443      
+       - 8443:443
     volumes:
       - ./drupal:/app/drupal
       - ./php/drupal.conf:/etc/apache2/sites-enabled/drupal.conf
       - ./apache/server.pem:/etc/ssl/certs/server.pem
-      - ./apache/server.key:/etc/ssl/private/server.key      
+      - ./apache/server.key:/etc/ssl/private/server.key
   web:
     build: apache
     ports:
@@ -17,12 +17,11 @@ services:
        - 443:443
     volumes:
        - ./apache/prestashop.conf:/etc/apache2/sites-enabled/prestashop.conf
-       - ./apache/wordpress.conf:/etc/apache2/sites-enabled/wordpress.conf       
+#       - ./apache/wordpress.conf:/etc/apache2/sites-enabled/wordpress.conf
        - ./apache/server.pem:/etc/ssl/certs/server.pem
        - ./apache/server.key:/etc/ssl/private/server.key
-       - ./prestashop:/app/prestashop  
-       - ./wordpress:/app/wordpress
-           
+       - ./prestashop:/app/prestashop
+#       - ./wordpress:/app/wordpress
   db:
     image: mysql
     environment:
@@ -39,7 +38,6 @@ services:
     ports:
       - 8080:80
     environment:
-      - PMA_HOST=db    
-        
+      - PMA_HOST=db
 volumes:
   basedatos:
