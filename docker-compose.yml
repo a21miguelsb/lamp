@@ -17,11 +17,11 @@ services:
        - 443:443
     volumes:
        - ./apache/prestashop.conf:/etc/apache2/sites-enabled/prestashop.conf
-#       - ./apache/wordpress.conf:/etc/apache2/sites-enabled/wordpress.conf
+       - ./apache/wordpress.conf:/etc/apache2/sites-enabled/wordpress.conf
        - ./apache/server.pem:/etc/ssl/certs/server.pem
        - ./apache/server.key:/etc/ssl/private/server.key
        - ./prestashop:/app/prestashop
-#       - ./wordpress:/app/wordpress
+       - ./wordpress:/app/wordpress
   db:
     image: mysql
     environment:

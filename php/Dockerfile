@@ -11,6 +11,8 @@ RUN apt-get update && apt-get install -y \
 
 RUN docker-php-ext-install zip xml curl gd opcache
 
+RUN docker-php-ext-install mysql pdo pdo_mysql && docker-php-ext-enable pdo_mysql
+
 RUN a2enmod ssl
 RUN a2enmod rewrite
 
